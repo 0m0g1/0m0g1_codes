@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccjfypvs8pav3"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_387xk"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_387xk")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Timezone"
+
+[node name="timezone" type="OptionButton" parent="HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+item_count = 3
+popup/item_0/text = "Africa"
+popup/item_1/text = "America"
+popup/item_1/id = 1
+popup/item_2/text = "Europe"
+popup/item_2/id = 2
+
+[node name="Label2" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "location"
+
+[node name="location" type="LineEdit" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="fetch" type="Button" parent="HBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Fetch"
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="display" type="Label" parent="HBoxContainer/CenterContainer"]
+layout_mode = 2
+text = "00:00"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="HBoxContainer/GridContainer/fetch" to="." method="_on_fetch_pressed"]

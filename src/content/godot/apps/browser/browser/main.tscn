@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8j04fflvbd8t"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_2eeh8"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2eeh8")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="searchbar" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="searchbutton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "search"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="document-display" type="TextEdit" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+editable = false
+
+[node name="display" type="Control" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/searchbutton" to="." method="_on_searchbutton_pressed"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

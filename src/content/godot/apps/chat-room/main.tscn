@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx6v72yc6dd1b"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_b11bh"]
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b11bh")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="username" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+placeholder_text = "username"
+
+[node name="join" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "join"
+
+[node name="host" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "host"
+
+[node name="chat_area" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="message_edit" type="LineEdit" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="send" type="Button" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "send
+"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/send" to="." method="_on_send_pressed"]
