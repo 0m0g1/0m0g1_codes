@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=3 uid="uid://dohu7f05clrux"]
+
+[ext_resource type="Texture2D" uid="uid://ctyksov3xpb7b" path="res://assets/controls/up.png" id="1_1a8n3"]
+[ext_resource type="Texture2D" uid="uid://bwea37lkgcn3r" path="res://assets/controls/up2.png" id="2_raucj"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="3_5ju01"]
+[ext_resource type="Texture2D" uid="uid://smo4a313j1we" path="res://icon.svg" id="3_c4qiu"]
+[ext_resource type="Texture2D" uid="uid://ddksnaeoc5evw" path="res://assets/controls/left.png" id="5_xuk7g"]
+[ext_resource type="Texture2D" uid="uid://b82wesyxfabqq" path="res://assets/controls/left2.png" id="6_or12o"]
+[ext_resource type="Texture2D" uid="uid://q2csdx6wlduf" path="res://assets/controls/right.png" id="7_cfpbg"]
+[ext_resource type="Texture2D" uid="uid://7fyv0ppngmgx" path="res://assets/controls/right2.png" id="8_t61ec"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ragrq"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eli2x"]
+size = Vector2(128, 128)
+
+[node name="level" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(303, 136)
+script = ExtResource("3_5ju01")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("3_c4qiu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_ragrq")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="platforms" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platforms"]
+position = Vector2(494, 404)
+scale = Vector2(9.02, 0.775)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="platforms/StaticBody2D"]
+texture = ExtResource("3_c4qiu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/StaticBody2D"]
+shape = SubResource("RectangleShape2D_eli2x")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="platforms"]
+position = Vector2(1460, 503)
+scale = Vector2(9.02, 0.775)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="platforms/StaticBody2D2"]
+texture = ExtResource("3_c4qiu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_eli2x")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="platforms"]
+position = Vector2(2568, 610)
+scale = Vector2(9.02, 0.775)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="platforms/StaticBody2D3"]
+texture = ExtResource("3_c4qiu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/StaticBody2D3"]
+shape = SubResource("RectangleShape2D_eli2x")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="platforms"]
+position = Vector2(3217, 335)
+scale = Vector2(9.02, 0.775)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="platforms/StaticBody2D4"]
+texture = ExtResource("3_c4qiu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platforms/StaticBody2D4"]
+shape = SubResource("RectangleShape2D_eli2x")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+
+[node name="up" type="TouchScreenButton" parent="Control/CanvasLayer"]
+position = Vector2(238, 262)
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("1_1a8n3")
+texture_pressed = ExtResource("2_raucj")
+action = "w"
+
+[node name="left" type="TouchScreenButton" parent="Control/CanvasLayer"]
+position = Vector2(59, 479)
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("5_xuk7g")
+texture_pressed = ExtResource("6_or12o")
+action = "a"
+
+[node name="right" type="TouchScreenButton" parent="Control/CanvasLayer"]
+position = Vector2(407, 478)
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("7_cfpbg")
+texture_pressed = ExtResource("8_t61ec")
+action = "d"

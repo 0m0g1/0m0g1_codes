@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8j04fflvbd8t"]
+[gd_scene load_steps=2 format=3 uid="uid://ckgfu3flo7lwh"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_2eeh8"]
+[ext_resource type="Script" path="res://main.gd" id="1_b7a0w"]
 
 [node name="main" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2eeh8")
+script = ExtResource("1_b7a0w")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -30,11 +30,12 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="searchbar" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+[node name="search_bar" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "https://"
 
-[node name="searchbutton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="search_button" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "search"
 
@@ -42,10 +43,9 @@ text = "search"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="document-display" type="TextEdit" parent="VBoxContainer/HBoxContainer2"]
+[node name="doc_display" type="TextEdit" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-editable = false
 
 [node name="display" type="Control" parent="VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -53,5 +53,5 @@ size_flags_horizontal = 3
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/searchbutton" to="." method="_on_searchbutton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/search_button" to="." method="_on_search_button_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]

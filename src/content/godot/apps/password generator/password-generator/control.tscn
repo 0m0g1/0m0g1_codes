@@ -1,0 +1,106 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo7qjjdpenc52"]
+
+[ext_resource type="Script" path="res://control.gd" id="1_2r7q5"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2r7q5")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="password_display" type="LineEdit" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="copy_button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "copy"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "password length
+"
+
+[node name="length_display" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "8"
+
+[node name="length_input" type="HSlider" parent="CenterContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 8.0
+max_value = 128.0
+value = 8.0
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="uppercase" type="CheckBox" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Include Uppercase letters"
+
+[node name="lowercase" type="CheckBox" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Include Lowercase letters"
+
+[node name="numbers" type="CheckBox" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Include numbers"
+
+[node name="characters" type="CheckBox" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="CenterContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Include characters"
+
+[node name="generate" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Generate"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/HBoxContainer/copy_button" to="." method="_on_copy_button_pressed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/VBoxContainer/length_input" to="." method="_on_length_input_value_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/generate" to="." method="_on_generate_pressed"]
